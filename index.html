@@ -1,4 +1,3 @@
-```html id="mobile-love-birthday"
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -63,32 +62,49 @@ color:white;
 font-size:14px;
 }
 
-/* LOVE GRID */
+/* LOVE GRID (FIX MOBILE ❤️) */
 .love-wrap{
 position:fixed;
-bottom:10vh;
+bottom:8vh;
 left:50%;
 transform:translateX(-50%);
-width:260px;
-height:220px;
+width:300px;
+height:260px;
 display:grid;
-grid-template-columns:repeat(6,1fr);
+grid-template-columns:repeat(7,1fr);
 gap:6px;
 }
 
+/* CINEMATIC PHOTO ✨ */
 .love-wrap img{
 width:100%;
 height:100%;
 object-fit:cover;
-border-radius:6px;
+border-radius:12px;
+
 opacity:0;
-transform:scale(.5);
-transition:.6s;
+transform:scale(1.4);
+filter:blur(10px) brightness(.7);
+
+transition:
+opacity 1s ease,
+transform 2.5s ease,
+filter 2s ease;
 }
 
-.show{
-opacity:1 !important;
-transform:scale(1) !important;
+/* SAAT MUNCUL */
+.love-wrap img.show{
+opacity:1;
+transform:scale(1);
+filter:blur(0px) brightness(1);
+animation:softZoom 6s ease-in-out infinite;
+}
+
+/* ZOOM HALUS */
+@keyframes softZoom{
+0%{transform:scale(1)}
+50%{transform:scale(1.05)}
+100%{transform:scale(1)}
 }
 
 /* LETTER */
@@ -134,7 +150,6 @@ animation:fall linear forwards;
 @keyframes fall{
 to{transform:translateY(110vh)}
 }
-
 </style>
 </head>
 
@@ -159,7 +174,7 @@ to{transform:translateY(110vh)}
 
 <script>
 
-/* ===== TEXT SLOW ===== */
+/* ===== TYPEWRITER (LEBIH SLOW 🐢) ===== */
 let texts=[
 "Halo kamu 👋",
 "Aku punya sesuatu...",
@@ -175,7 +190,7 @@ function type(){
 if(i<texts.length){
 if(j<texts[i].length){
 msg.innerHTML+=texts[i][j++]
-setTimeout(type,120) // diperlambat
+setTimeout(type,120)
 }else{
 setTimeout(()=>{
 msg.innerHTML=""
@@ -187,29 +202,29 @@ type()
 }
 type()
 
-/* ===== FOTO USER (GANTI LINK DI SINI) ===== */
+/* ===== FOTO (GANTI DI SINI) ===== */
 let photos=[
 "foto1.jpg",
-"https://picsum.photos/200?2",
-"https://picsum.photos/200?3",
-"https://picsum.photos/200?4",
-"https://picsum.photos/200?5",
-"https://picsum.photos/200?6",
-"https://picsum.photos/200?7",
-"https://picsum.photos/200?8",
-"https://picsum.photos/200?9",
-"https://picsum.photos/200?10",
-"https://picsum.photos/200?11",
-"https://picsum.photos/200?12",
-"https://picsum.photos/200?13",
-"https://picsum.photos/200?14",
-"https://picsum.photos/200?15",
-"https://picsum.photos/200?16",
-"https://picsum.photos/200?17",
-"https://picsum.photos/200?18"
+"foto1.jpg",
+"foto1.jpg",
+"foto1.jpg",
+"foto1.jpg",
+"foto1.jpg",
+"foto1.jpg",
+"foto1.jpg",
+"foto1.jpg",
+"foto1.jpg",
+"foto1.jpg",
+"foto1.jpg",
+"foto1.jpg",
+"foto1.jpg",
+"foto1.jpg",
+"foto1.jpg",
+"foto1.jpg",
+"foto1.jpg"
 ]
 
-/* POSISI LOVE SHAPE */
+/* SHAPE LOVE ❤️ */
 let heartIndex=[
 1,2,4,5,
 0,3,6,
@@ -227,7 +242,7 @@ showPhotos()
 setTimeout(()=>{
 openLetter()
 confetti()
-},5000)
+},7000)
 
 }
 
@@ -243,7 +258,7 @@ wrap.appendChild(img)
 }
 }
 
-/* SHOW ONE BY ONE */
+/* SHOW CINEMATIC */
 function showPhotos(){
 
 let imgs=document.querySelectorAll(".love-wrap img")
@@ -251,7 +266,7 @@ let imgs=document.querySelectorAll(".love-wrap img")
 heartIndex.forEach((pos,idx)=>{
 setTimeout(()=>{
 imgs[pos].classList.add("show")
-}, idx*300)
+}, idx*500)
 })
 
 }
@@ -277,4 +292,3 @@ document.body.appendChild(c)
 
 </body>
 </html>
-```
